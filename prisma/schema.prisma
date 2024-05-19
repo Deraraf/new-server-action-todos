@@ -14,6 +14,6 @@ datasource db {
 }
 model Todo {
   id String @id @default(uuid())
-  input String required
+  input String
   createdAt DateTime @default(now())
 }
