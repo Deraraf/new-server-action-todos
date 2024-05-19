@@ -8,7 +8,7 @@ import { useFormState } from 'react-dom'
 const FormElement = () => {
     const formRef = useRef<HTMLFormElement>(null)
     const inputRef = useRef<HTMLInputElement>(null);
-    const [state,formAction] = useFormState(Create,null)
+     const [state,formAction] = useFormState(Create,null)
      
     const handleClick = () => {
       if (inputRef.current) {
@@ -18,8 +18,8 @@ const FormElement = () => {
 
   return (
     <form action={async(formData:FormData) =>{
-        formAction(formData)
-        formRef.current?.reset()
+       formAction(formData)
+       formRef.current?.reset()
     }}className="flex flex-col justify-center" ref={formRef}>
 
     <input 
@@ -33,8 +33,7 @@ const FormElement = () => {
 
     <SubmitButton />
     
-    <p className='text-red-500'>{state}</p>
-
+       <p className='text-red-500'>{state}</p>
   </form>
   )
 }
