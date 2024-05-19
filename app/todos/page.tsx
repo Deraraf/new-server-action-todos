@@ -7,8 +7,13 @@ import FormElement from '../components/Form';
 import Link from 'next/link';
 import DefaultValueInput from '../components/DefaultValueInput';
 
+export interface Todo {
+  input: string;
+  id: string;
+}
 
-const getData = async() =>{
+
+const getData = async(): Promise<Todo[]> =>{
   const data = await prisma.todo?.findMany({
     select:{
       input:true,
@@ -18,7 +23,7 @@ const getData = async() =>{
       createdAt:"desc"
     }
   })
-  return data
+  return data as Todo[];
 }
 
 const Todos =async () => {
@@ -34,7 +39,7 @@ const Todos =async () => {
        
        <div className="flex flex-col mt-2 gap-y-2 items-center justify-center w-full">
           
-          {data.map(todo =>(
+          {data.map((todo:Todo) =>(
           <div key={todo.id} className='flex items-center justify-center w-full h-full gap-x-2 '>
             <form className="flex gap-x-2 " action={edit} >
               <input name="inputid" type = "hidden" value={todo.id} />

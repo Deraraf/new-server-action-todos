@@ -2,7 +2,13 @@
 
 import React, { useRef } from 'react'
 
-const DefaultValueInput = ({todo} :{todo:string}) => {
+export interface Todo {
+  input: string;
+  id: number;
+}
+
+
+const DefaultValueInput = ({todo} : { todo?: Todo['input'] }) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleClick = () => {
