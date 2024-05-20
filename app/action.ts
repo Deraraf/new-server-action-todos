@@ -3,9 +3,8 @@
 import { revalidatePath } from "next/cache"
 import Todo from "./model/db"
 
-
 export async function Create(prevState:any,formData:FormData) {
-    "use server"
+    
    try {
     const input = formData.get('input') as string
     await new Todo({
@@ -19,9 +18,10 @@ export async function Create(prevState:any,formData:FormData) {
   }
 
  export async function edit(formData:FormData){
-    "use server"
+   
     const input = formData.get('input') as string
     const inputId = formData.get('inputid') as string
+    try{
     const updatedTodo = await Todo.findOneAndUpdate(
       { _id: inputId },
       { $set: { input } },
@@ -33,10 +33,14 @@ export async function Create(prevState:any,formData:FormData) {
     } else {
       console.error(`Todo with ID: ${inputId} not found`);
     }
-
+  }catch(error){
+    return {
+      error:"something went wrong"
+    }
   }
+}
  export async function deleteItems(formData:FormData) {
-  "use server"
+  
   const inputId = formData.get('inputid') as string
   await Todo.deleteOne({ _id: inputId })
 

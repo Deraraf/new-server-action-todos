@@ -16,11 +16,15 @@ const FormElement = () => {
       }
     };
 
+    const ClientTodo = async(formData:FormData) =>{
+
+     formAction(formData)
+ 
+      formRef.current?.reset()
+   }
+
   return (
-    <form action={async(formData:FormData) =>{
-       formAction(formData)
-       formRef.current?.reset()
-    }}className="flex flex-col justify-center" ref={formRef}>
+    <form action={ClientTodo}className="flex flex-col justify-center" ref={formRef}>
 
     <input 
     type="text"

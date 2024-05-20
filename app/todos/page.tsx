@@ -26,8 +26,7 @@ const Better =async () => {
        <div className="h-screen w-screen flex flex-col gap-y-4 justify-center items-center">
          <h1 className='text-4xl text-red-600 shadow-2xl'>Add Todos</h1>
          <div className="rounded-lg w-[40vw] shadow-2xl p-5">
-   
-         
+  
           <FormElement />
           
           <div className="flex flex-col mt-2 gap-y-2 items-center justify-center w-full">
